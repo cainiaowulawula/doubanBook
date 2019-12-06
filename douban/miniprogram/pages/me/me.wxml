@@ -1,0 +1,13 @@
+<!--miniprogram/pages/me/me.wxml-->
+<view class="container">
+  <view wx:if="{{!userInfo.openid}}">
+    <image class="userinfo" src="../../images/zanwu.jpg"></image>
+    <van-button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="info">登 录</van-button>
+  </view>
+  <view class="container" wx:else>
+    <image class="userinfo" src="{{userInfo.avatarUrl}}"></image>
+    <view>{{userInfo.nickName}}</view>
+    <van-button type="info" class="scan" bindtap="addbook">添加图书</van-button>
+    <van-button type="danger" bindtap="goBackUserInfo">退 出</van-button>
+  </view>
+</view>

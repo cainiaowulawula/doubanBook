@@ -1,0 +1,13 @@
+/* miniprogram/pages/me/me.wxss */
+.userinfo {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  margin: 0 auto
+}
+.container {
+  margin: 0 auto
+}
+.scan {
+  margin: 20px 0
+}

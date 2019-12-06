@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/me/me",
+    "pages/show/show",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -26,5 +28,22 @@
   "style": "v2",
   "usingComponents": {
     "van-button": "@vant/weapp/button"
+  },
+  "tabBar": {
+    "selectedColor": "#4da9ff",
+    "list": [
+      {
+        "pagePath": "pages/show/show",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home01.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/relationship.png",
+        "selectedIconPath": "images/relationship01.png"
+      }
+    ]
   }
 }
