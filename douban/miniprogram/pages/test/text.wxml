@@ -1,0 +1,4 @@
+<!--miniprogram/pages/test/text.wxml.wxml-->
+<view>
+  <van-button type="default">按钮</van-button>
+</view>
