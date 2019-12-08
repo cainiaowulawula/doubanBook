@@ -1,6 +1,6 @@
 // 云函数入口文件
-const axios = require('axios')
 const cloud = require('wx-server-sdk')
+const axios = require('axios')
 const doubanbook = require('doubanbook')
 const cheerio = require('cheerio')
 
@@ -19,15 +19,31 @@ async function getDouban(isbn) {
 
 async function searchDouban (isbn) {
   let _getDouban = await getDouban(isbn)
-  console.log(_getDouban.title, _getDouban.abstract)
+  // console.log(_getDouban.title, _getDouban.abstract)
   let detailsPage = await axios.get(_getDouban.url)
   // 使用cheerio这个库，这个库是专门用来解析HTML文档用的
+  const $ = cheerio.load(detailsPage.data)
+  const info = $('#info').text().split('\n').map(v => v.trim()).filter(v => v)
+  console.log(info)
+  let author = info[1]
+  let money = info[6]
+  const ret = {
+    create_time: new Date().getTime(),
+    author,
+    title: _getDouban.title,
+    image: _getDouban.cover_url,
+    url: _getDouban.url,
+    money
+  }
+  console.log(ret)
+  return ret
 }
 
-console.log(searchDouban('9787010009148'))
+// console.log(searchDouban('9787010009148'))
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const {isbn} = event;
-  return getDouban(isbn)
+  console.log(event)
+  const {isbn} = event
+  return searchDouban('9787010009148')
 }
