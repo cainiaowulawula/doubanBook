@@ -25,22 +25,21 @@ Page({
       }
     })
   },
-  add (result) {
+  add(res) {
+    console.log(111, res)
     wx.cloud.callFunction({
       name: 'getdouban',
-      data: {
-        result
-      },
-      success:({res}) => {
-        console.log(res)
+      data: {res},
+      success:(result) => {
+        console.log(result)
       }
     })
   },
   addbook () {
     wx.scanCode({
       success:res=> {
-        add(res.result)
         console.log(res.result)
+        this.add(res.result)
       }
     })
   },
