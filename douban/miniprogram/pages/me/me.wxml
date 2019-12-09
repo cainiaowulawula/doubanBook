@@ -2,12 +2,26 @@
 <view class="container">
   <view wx:if="{{!userInfo.openid}}">
     <image class="userinfo" src="../../images/zanwu.jpg"></image>
-    <van-button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="info">登 录</van-button>
+    <van-button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" type="info">登 录</van-button>
   </view>
   <view class="container" wx:else>
-    <image class="userinfo" src="{{userInfo.avatarUrl}}"></image>
-    <view>{{userInfo.nickName}}</view>
-    <van-button type="info" class="scan" bindtap="addbook">添加图书</van-button>
-    <van-button type="danger" bindtap="goBackUserInfo">退 出</van-button>
+    <loading hidden="{{loadingHidden}}">加载中...</loading>
+    <view class="userImage">
+      <image class="userinfo" src="{{userInfo.avatarUrl}}"></image>
+      <view>{{userInfo.nickName}}</view>
+      <button size="mini" type="warn" style="font-size:12px;margin-top:10px" plain="true" bindtap="goBackUserInfo">退 出</button>
+    </view>
+    <view class="content">
+      <van-cell-group>
+        <van-cell title="添加图书" bindtap="addbook" is-link />
+        <van-cell title="个人信息" bindtap="userDetails" is-link />
+      </van-cell-group>
+      <!-- <van-button type="info" class="scan" bindtap="addbook">添加图书</van-button>
+      <van-button type="danger" bindtap="goBackUserInfo">退 出</van-button>
+      <button open-type="contact">进入客服会话</button> -->
+    </view>
+    <view class="contact">
+      <van-button open-type="contact">进入客服会话</van-button>
+    </view>
   </view>
 </view>

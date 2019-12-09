@@ -1,3 +1,22 @@
-<view>
-  首页
+<view style="height:auto">
+  <view class="itemList" wx:for="{{getDataList}}" wx:key="_id">
+  <van-row>
+    <van-col span="8">
+      <image class="bookImage" src="{{item.result.image}}"></image>
+    </van-col>
+    <van-col span="16">
+      <van-row>
+        <van-col span="24">
+          <view class="detailsList">{{item.result.title}}</view>
+          <view class="authorList">作者：{{item.result.author}}</view>
+          <view class="authorList">{{item.result.froms}}</view>
+          <view class="authorList">{{item.result.money}}</view>
+          <view class="authorList">{{item.result.date}}</view>
+          <view class="authorList">{{item.result.press}}</view>
+        </van-col>
+      </van-row>
+    <!-- {{item.result.title}} --- {{item.result.author}} -->
+    </van-col>
+  </van-row>
+  </view>
 </view>

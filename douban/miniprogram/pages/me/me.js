@@ -1,4 +1,5 @@
 // miniprogram/pages/me/me.js
+const db = wx.cloud.database()
 Page({
   onGetUserInfo (e) {
     console.log(e)
@@ -25,13 +26,41 @@ Page({
       }
     })
   },
+  userDetails () {
+    console.log(this.data.userInfo)
+    wx.showModal({
+      title: '个人信息',
+      content: `昵称：${this.data.userInfo.nickName}\r\n国家：${this.data.userInfo.country}\r\n省份：${this.data.userInfo.province}\r\n城市：${this.data.userInfo.city}\r\n`,
+    })
+  },
   add(res) {
     console.log(111, res)
+    this.setData({
+      loadingHidden: false
+    })
     wx.cloud.callFunction({
       name: 'getdouban',
-      data: {res},
+      data: {
+        res:res, 
+        context:''
+      },
       success:(result) => {
         console.log(result)
+        db.collection('doubanbooks').add({
+          // data 字段表示需新增的 JSON 数据
+          data: result,
+        }).then(res => {
+          console.log(res)
+          if (res._id) {
+            this.setData({
+              loadingHidden: true
+            })
+            wx.showModal({
+              title: '添加成功',
+              content: `《${result.result.title}》添加成功`,
+            })
+          }
+        })
       }
     })
   },
@@ -47,7 +76,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: wx.getStorageSync('userInfo') || {}
+    userInfo: wx.getStorageSync('userInfo') || {},
+    loadingHidden: true
   },
 
   /**

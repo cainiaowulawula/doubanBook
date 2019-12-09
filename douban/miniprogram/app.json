@@ -20,14 +20,17 @@
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "高尚的图书馆",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",
   "usingComponents": {
-    "van-button": "@vant/weapp/button"
+    "van-button": "@vant/weapp/button",
+    "van-cell": "@vant/weapp/cell",
+    "van-col": "@vant/weapp/col",
+    "van-row": "@vant/weapp/row"
   },
   "tabBar": {
     "selectedColor": "#4da9ff",

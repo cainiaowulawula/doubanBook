@@ -3,11 +3,31 @@
   width: 80px;
   height: 80px;
   border-radius: 100%;
-  margin: 0 auto
+  margin: 20px auto 10px
 }
 .container {
-  margin: 0 auto
+  margin: 0 auto;
+  width: 100%
 }
 .scan {
   margin: 20px 0
+}
+.loginBtn {
+  width: 100%;
+}
+.userImage {
+  height: 100%;
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  color: gray;
+  font-weight: 700;
+}
+.content {
+  margin-top: 20px;
+  width: 100%
+}
+.contact {
+  margin: 20px auto;
 }
