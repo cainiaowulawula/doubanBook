@@ -26,6 +26,10 @@ async function searchDouban (isbn) {
   const info = $('#info').text().split('\n').map(v => v.trim()).filter(v => v)
   console.log(info)
   let author = info[1]
+  let press = info[2]
+  let page = info[5]
+  let froms = info[8]
+  let date = info[4]
   let money = info[6]
   const ret = {
     create_time: new Date().getTime(),
@@ -33,17 +37,21 @@ async function searchDouban (isbn) {
     title: _getDouban.title,
     image: _getDouban.cover_url,
     url: _getDouban.url,
-    money
+    money,
+    press,
+    page,
+    froms,
+    date
   }
   console.log(ret)
   return ret
 }
 
-// console.log(searchDouban('9787010009148'))
+console.log(searchDouban('9787010009148'))
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log(event)
-  const {isbn} = event
-  return searchDouban('9787010009148')
+  console.log(event.res)
+  const isbn = event.res
+  return searchDouban(isbn)
 }
