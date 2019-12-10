@@ -1,0 +1,103 @@
+<view>
+  <!-- <view>13213213{{getData.result.author}}</view> -->
+  <view class="thisViewImage">
+    <image class="thisImage" src="{{getData.result.image}}"></image>
+  </view>
+  <view class="thisViewTitle">
+    <view>
+      <text style="font-size: 15px;font-weight: 700">{{getData.result.title}}</text>
+    </view>
+    <view>
+      <van-row>
+        <van-col span="24">
+          <van-tag type="primary">{{getData.result.tagList[0].title}}</van-tag>
+          <van-tag style="margin:0 10px" type="success">{{getData.result.tagList[1].title}}</van-tag>
+          <van-tag type="danger">{{getData.result.tagList[2].title}}</van-tag>
+          <van-tag style="margin:0 10px" type="warning">{{getData.result.tagList[3].title}}</van-tag>
+        </van-col>
+      </van-row>
+    </view>
+    <view class="smallSize">作者：{{getData.result.author}}</view>
+    <view class="smallSize">{{getData.result.date}}</view>
+    <view class="smallSize">{{getData.result.froms}}</view>
+    <view class="smallSize">{{getData.result.money}}</view>
+    <view class="smallSize">{{getData.result.page}}</view>
+  </view>
+  <view class="briefIntroduction">
+    <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">内容简介</view>
+    <view class="content" style="overflow: {{contentHidden}}; -webkit-line-clamp: {{lineClamp}};">{{getData.result.content}}</view>
+    <view style="text-align:center"><button bindtap="onClickUnfoldMore" style="font-size:12px;color:#4da9ff" size="mini">{{unfoldMore}}</button></view>
+  </view>
+  <view class="briefIntroduction">
+    <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">目录</view>
+    <view wx:if="{{getData.result.short.length !== 0}}">
+      <view wx:if="{{menuType}}">
+        <view class="content" wx:for="{{getData.result.shortOmit}}" wx:for-index="idx" wx:key="item">
+          <view wx:if="{{idx < getData.result.shortOmit.length-2 }}">
+            {{item}}
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class="content" wx:for="{{getData.result.short}}" wx:for-index="idx" wx:key="item">
+          <view wx:if="{{idx < getData.result.short.length-1 }}">
+            {{item}}
+          </view>
+        </view>
+      </view>
+    <view style="text-align:center"><button bindtap="onClickMenu" style="font-size:12px;color:#4da9ff" size="mini">{{menu}}</button></view>
+    </view>
+    <view wx:else class="content">暂无</view>
+  </view>
+  <view class="briefIntroduction">
+    <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">喜欢读此书的人也喜欢的电子书</view>
+    <view wx:if="{{getData.result.e_bookList.length > 0}}">
+      <view>
+      <scroll-view scroll-x class="scroll-header">
+        <view wx:for="{{getData.result.e_bookList}}" wx:key="item" id="green" class="scroll-view-item">
+          <view  style="display: block">
+          <image class="thisImage" src="{{item.src}}"></image>
+          </view>
+          <view style="font-size:12px;overflow:hidden;width:100px">{{item.title}}</view>
+        </view>
+      </scroll-view>
+      </view>
+    </view>
+    <view wx:else>暂无</view>
+  </view>
+  <view class="briefIntroduction">
+    <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">喜欢读此书的人也喜欢</view>
+    <view wx:if="{{getData.result.bookList.length > 0}}">
+      <view>
+      <scroll-view scroll-x class="scroll-header">
+        <view wx:for="{{getData.result.bookList}}" wx:key="item" id="green" class="scroll-view-item">
+          <view  style="display: block">
+          <image class="thisImage" src="{{item.src}}"></image>
+          </view>
+          <view style="font-size:12px;overflow:hidden;width:100px">{{item.title}}</view>
+        </view>
+      </scroll-view>
+      </view>
+    </view>
+    <view wx:else>暂无</view>
+  </view>
+  <view class="briefIntroduction">
+    <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">评论</view>
+    <view wx:if="{{getData.result.userEvaluateList.length > 0}}">
+    <van-divider />
+      <view wx:for="{{getData.result.userEvaluateList}}" wx:key="item">
+        <view style="display:flex;justify-content:space-between">
+          <text style="font-size:14px;color:#3377aa;">{{item.author}}</text>
+          <text style="font-size:12px;color:gray">{{item.data}}</text>
+        </view>
+        <view style="font-size:12px;color:gray">{{item.evaluateStore}}</view>
+        <view style="display:flex;justify-content:flex-end">
+          <van-icon name="good-job-o" />
+          <text style="font-size:12px;color:gray">({{item.number}})</text>
+        </view>
+        <van-divider />
+      </view>
+    </view>
+    <view wx:else>暂无</view>
+  </view>
+</view>

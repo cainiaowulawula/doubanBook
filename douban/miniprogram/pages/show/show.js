@@ -9,6 +9,18 @@ Page({
     getDataList: [],
     page: 0
   },
+
+  /**
+   * 跳转详情页
+   */
+  routerDetails: function (e) {
+    console.log(e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: "/pages/details/details?id=" + e.currentTarget.dataset.id
+    })
+  },
+
+
   /**
    * 页面上拉触底事件的处理函数
    */
