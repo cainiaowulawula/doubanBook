@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/me/me",
     "pages/show/show",
+    "pages/me/me",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -15,7 +15,8 @@
     "pages/openapi/cloudid/cloudid",
     "pages/im/im",
     "pages/im/room/room",
-    "pages/test/text"
+    "pages/test/text",
+    "pages/details/details"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -30,7 +31,11 @@
     "van-button": "@vant/weapp/button",
     "van-cell": "@vant/weapp/cell",
     "van-col": "@vant/weapp/col",
-    "van-row": "@vant/weapp/row"
+    "van-row": "@vant/weapp/row",
+    "van-divider": "@vant/weapp/divider",
+    "van-icon": "@vant/weapp/icon",
+    "van-tag": "@vant/weapp/tag",
+    "van-swipe": "@vant/weapp/swipe-cell"
   },
   "tabBar": {
     "selectedColor": "#4da9ff",
