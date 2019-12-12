@@ -45,3 +45,16 @@ width:120px;
 margin: 0 auto;
 display: inline-block;
 }
+/* .bottomtag{
+  position: fixed;
+  height:40px;
+  line-height: 40px;
+  bottom: 0;
+  width: 100%;
+  background-color:gray
+}
+.inputClass {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px red solid
+} */

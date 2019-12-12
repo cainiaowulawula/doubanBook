@@ -35,7 +35,8 @@
     "van-divider": "@vant/weapp/divider",
     "van-icon": "@vant/weapp/icon",
     "van-tag": "@vant/weapp/tag",
-    "van-swipe": "@vant/weapp/swipe-cell"
+    "van-swipe": "@vant/weapp/swipe-cell",
+    "van-popup": "@vant/weapp/popup"
   },
   "tabBar": {
     "selectedColor": "#4da9ff",

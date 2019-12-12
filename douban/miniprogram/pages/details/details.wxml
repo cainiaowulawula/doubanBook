@@ -82,7 +82,13 @@
     <view wx:else>暂无</view>
   </view>
   <view class="briefIntroduction">
-    <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">评论</view>
+    <view style="display:flex;justify-content:space-between">
+      <view style="font-size: 15px;font-weight: 700;margin-bottom:10px">评论</view>
+      <view style="margin-bottom:10px;color:orange" bindtap="showPopup">
+        <van-icon name="edit" size="15"/>
+        <text style="font-size: 13px;font-weight: 700;">写评论</text>
+      </view>
+    </view>
     <view wx:if="{{getData.result.userEvaluateList.length > 0}}">
     <van-divider />
       <view wx:for="{{getData.result.userEvaluateList}}" wx:key="item">
@@ -92,7 +98,8 @@
         </view>
         <view style="font-size:12px;color:gray">{{item.evaluateStore}}</view>
         <view style="display:flex;justify-content:flex-end">
-          <van-icon name="good-job-o" />
+          <van-icon wx:if="{{item.type==='有用'}}" bindtap="handlerClickPraise" data-id="{{item.author}}" name="good-job-o" />
+          <van-icon wx:else bindtap="handlerClickPraise" data-id="{{item.author}}" style="color:red" name="good-job" />
           <text style="font-size:12px;color:gray">({{item.number}})</text>
         </view>
         <van-divider />
@@ -100,4 +107,12 @@
     </view>
     <view wx:else>暂无</view>
   </view>
+  <van-popup show="{{show}}" position="bottom" bind:close="onClose">
+    <view style="display:flex;justify-content: center;margin-top:10px;">
+      <textarea auto-height placeholder-style="color:red" bindinput='getInputValue' confirm-hold cursor-spacing="90" style="width:90%" placeholder="请输入评论" />
+    </view>
+    <view style="text-align:right;margin:20px 20px 10px 0;">
+    <button size="mini" style="font-size:14px" bindtap="onpublish" type="primary">发表</button>
+    </view>
+  </van-popup>
 </view>
